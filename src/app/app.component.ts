@@ -1,14 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MomentService } from './moment.service';
 
 @Component({
   selector: 'app-root',
   template: `
-  <h1>
-    {{title}}
-  </h1>
-  `,
-  styles: []
+    <p>{{title}}</p>
+    <p>momentMsg: {{momentMsg}}</p>
+  `
 })
-export class AppComponent {
-  title = 'app works!';
+export class AppComponent implements OnInit {
+  title = 'http://stackoverflow.com/questions/39780378/making-moment-injectable-in-angular2';
+
+  momentMsg = this.ms.moment("20111031", "YYYYMMDD").toString();
+
+  constructor(private ms: MomentService) {
+  }
+
+  ngOnInit() { }
 }
